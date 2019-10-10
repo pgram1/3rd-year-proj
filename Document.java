@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 
 public class Document {
@@ -16,8 +17,9 @@ public class Document {
 
 	void getImages() throws IOException {
 		System.out.println("\n-----\nCreating output directory\n-----\n");
-		System.out.println("mkdir.exe \"" + this.outputFolder + "\"");
-		Runtime.getRuntime().exec("3rdbinaries\\mkdir.exe \"" + this.outputFolder + "\"");
+		System.out.println((this.outputFolder).toString());
+		new File(this.outputFolder).mkdirs();
+
 
 		System.out.println("\n-----\nExporting all images as PNG\n-----\n");
 		System.out.println("pdfimages.exe -png \"" + this.path + "\" \"" + this.outputFile + "\"");
