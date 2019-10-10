@@ -13,6 +13,8 @@ public class Program {
 				a.getImages();
 			} catch (IOException e) {
 				e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 
 			Scaler scal = new Scaler(a.getOutputFolder());
@@ -42,6 +44,8 @@ public class Program {
 						try {
 							a.getImages();
 						} catch (IOException e) {
+							e.printStackTrace();
+						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
 					}

@@ -25,8 +25,8 @@ public class Scaler {
 					"3rdbinaries\\ffmpeg.exe -i \"" + x.getPath() + "\" -vf scale=200:200 \"" + x.getPath() + ".gif\"");
 			try {
 				Runtime.getRuntime().exec("3rdbinaries\\ffmpeg.exe -i \"" + x.getPath() + "\" -vf scale=200:200 \""
-						+ x.getPath() + ".gif\"");
-			} catch (IOException e) {
+						+ x.getPath() + ".gif\"").waitFor();
+			} catch (IOException | InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
