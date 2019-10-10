@@ -48,6 +48,11 @@ public class Program {
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
+						
+
+
+						Scaler scal = new Scaler(a.getOutputFolder());
+						scal.scaleImages();
 					}
 				});
 			}
