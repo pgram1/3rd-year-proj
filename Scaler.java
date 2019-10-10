@@ -32,6 +32,13 @@ public class Scaler {
 			}
 
 		});
+		
+		System.out.println("\n-----\nDeleting all PNGs\n-----\n");
+		
+		Arrays.asList(fileList).forEach(x -> {
+			x.delete();
+			
+		});
 
 	}
 
