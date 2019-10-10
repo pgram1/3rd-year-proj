@@ -20,6 +20,8 @@ public class Scaler {
 
         Arrays.asList(fileList).forEach(x -> {
                 System.out.println(x.getPath());
+		
+		//put the commands from below somehow here, so they are done for each file listed
                 
                 
                 
