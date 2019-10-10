@@ -1,39 +1,38 @@
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Scaler {
 	private String path;
-	private String outputFile;
 
 	public Scaler(String path) {
 		this.path = path;
 
 	}
 
-	void scaleImages(){
+	void scaleImages() {
 
-		
 		File folderPath = new File(this.path);
 
 		File[] fileList = folderPath.listFiles();
 
+		System.out.println("\n-----\nScaling all images - Reducing to gif colours\n-----\n");
 
-        Arrays.asList(fileList).forEach(x -> {
-                System.out.println(x.getPath());
-		
-		//put the commands from below somehow here, so they are done for each file listed
-                
-                
-                
-            });
+		Arrays.asList(fileList).forEach(x -> {
+			System.out.println(x.getPath());
 
-		/*System.out.println("\n-----\nScaling all images - Reducing to gif colours\n-----\n");
+			System.out.println(
+					"3rdbinaries\\ffmpeg.exe -i \"" + x.getPath() + "\" -vf scale=200:200 \"" + x.getPath() + ".gif\"");
+			try {
+				Runtime.getRuntime().exec("3rdbinaries\\ffmpeg.exe -i \"" + x.getPath() + "\" -vf scale=200:200 \""
+						+ x.getPath() + ".gif\"");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-		System.out.println("ffmpeg.exe -i \"" + this.outputFile + "\" -vf scale=200:200 \"" + this.scaledFile + "\"");
-		Runtime.getRuntime().exec(
-				"3rdbinaries\\ffmpeg.exe -i \"" + this.outputFile + "\" -vf scale=200:200 \"" + this.scaledFile + "\"");
-				
-		*/
+		});
+
 	}
 
 }
