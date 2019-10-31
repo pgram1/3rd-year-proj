@@ -5,25 +5,25 @@ import javax.imageio.ImageIO;
 
 public class Comparator {
 
-	DataImage aImage = new DataImage("Knowledgeable", "badges\\1-1_Knowledgeable.png");
-	DataImage bImage = new DataImage("Experienced Collaborator", "badges\\1-2_Experienced_Collaborator.png");
-	DataImage cImage = new DataImage("Confident in Authentic Challenges", "badges\\1-3_Conf_In_Auth_Challenges.png");
-	DataImage dImage = new DataImage("Ethical", "badges\\1-4_Ethical.png");
-	DataImage eImage = new DataImage("Culturally Agile", "badges\\2-1_Culturally_Agile.png");
+	DataImage aImage = new DataImage("Knowledgeable", "badges\\1-1_Knowledgeable.png.gif");
+	DataImage bImage = new DataImage("Experienced Collaborator", "badges\\1-2_Experienced_Collaborator.png.gif");
+	DataImage cImage = new DataImage("Confident in Authentic Challenges", "badges\\1-3_Conf_In_Auth_Challenges.png.gif");
+	DataImage dImage = new DataImage("Ethical", "badges\\1-4_Ethical.png.gif");
+	DataImage eImage = new DataImage("Culturally Agile", "badges\\2-1_Culturally_Agile.png.gif");
 	DataImage fImage = new DataImage("Active Citizen Respecting Diversity",
-			"badges\\2-2_Act_Cit_Respecting_Diversity.png");
+			"badges\\2-2_Act_Cit_Respecting_Diversity.png.gif");
 	DataImage gImage = new DataImage("Working Outside & Across Disciplines",
-			"badges\\2-3_Work_Out_And_Across_Disciplines.png");
-	DataImage hImage = new DataImage("Adaptable Problem Solver", "badges\\2-4_Adaptable_Problem_Solver.png");
-	DataImage iImage = new DataImage("Experienced in Research", "badges\\3-1_Experienced_In_Research.png");
-	DataImage jImage = new DataImage("Critical Thinker", "badges\\3-2_Critical_Thinker.png");
-	DataImage kImage = new DataImage("Creative & Innovative", "badges\\3-3_Creative_and_Innovative.png");
-	DataImage lImage = new DataImage("Information & Digitally Literate", "badges\\3-4_Info_and_Dig_Literate.png");
-	DataImage mImage = new DataImage("Lifelong Learner", "badges\\4-1_Lifelong_Learner.png");
-	DataImage nImage = new DataImage("Team Player & Time Manager", "badges\\4-2_Team_Player_And_Time_Manager.png");
-	DataImage oImage = new DataImage("Skilled Communicator", "badges\\4-3_Skilled_Communicator.png");
-	DataImage pImage = new DataImage("Reflective & Self Aware", "badges\\4-4_Reflective_And_Self_Aware.png");
-	DataImage qImage = new DataImage("Professional & Adaptable", "badges\\4-5_Professional_And_Adaptable.png");
+			"badges\\2-3_Work_Out_And_Across_Disciplines.png.gif");
+	DataImage hImage = new DataImage("Adaptable Problem Solver", "badges\\2-4_Adaptable_Problem_Solver.png.gif");
+	DataImage iImage = new DataImage("Experienced in Research", "badges\\3-1_Experienced_In_Research.png.gif");
+	DataImage jImage = new DataImage("Critical Thinker", "badges\\3-2_Critical_Thinker.png.gif");
+	DataImage kImage = new DataImage("Creative & Innovative", "badges\\3-3_Creative_and_Innovative.png.gif");
+	DataImage lImage = new DataImage("Information & Digitally Literate", "badges\\3-4_Info_and_Dig_Literate.png.gif");
+	DataImage mImage = new DataImage("Lifelong Learner", "badges\\4-1_Lifelong_Learner.png.gif");
+	DataImage nImage = new DataImage("Team Player & Time Manager", "badges\\4-2_Team_Player_And_Time_Manager.png.gif");
+	DataImage oImage = new DataImage("Skilled Communicator", "badges\\4-3_Skilled_Communicator.png.gif");
+	DataImage pImage = new DataImage("Reflective & Self Aware", "badges\\4-4_Reflective_And_Self_Aware.png.gif");
+	DataImage qImage = new DataImage("Professional & Adaptable", "badges\\4-5_Professional_And_Adaptable.png.gif");
 
 	DataImage[] images = { aImage, bImage, cImage, dImage, eImage, fImage, gImage, hImage, iImage, jImage, kImage,
 			lImage, mImage, nImage, oImage, pImage, qImage };
