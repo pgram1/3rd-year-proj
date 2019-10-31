@@ -15,16 +15,16 @@ public class DataImage {
 		this.possibleMatches = new ArrayList<ScannedImage>();
 	}
 	public ArrayList<ScannedImage> getPossibleMatches() {
-		return possibleMatches;		
+		return this.possibleMatches;		
 	}
 	public void addPossibleMatches(ScannedImage image) {
 		this.possibleMatches.add(image);
 	}
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 	public String getPath() {
-		return path;
+		return this.path;
 	}
 
 }

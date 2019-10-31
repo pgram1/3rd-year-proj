@@ -25,26 +25,29 @@ public class Comparator {
 	DataImage pImage = new DataImage("Reflective & Self Aware", "badges\\4-4_Reflective_And_Self_Aware.png.gif");
 	DataImage qImage = new DataImage("Professional & Adaptable", "badges\\4-5_Professional_And_Adaptable.png.gif");
 
-	DataImage[] images = { aImage, bImage, cImage, dImage, eImage, fImage, gImage, hImage, iImage, jImage, kImage,
+	DataImage[] baseimages = { aImage, bImage, cImage, dImage, eImage, fImage, gImage, hImage, iImage, jImage, kImage,
 			lImage, mImage, nImage, oImage, pImage, qImage };
-
+	
+	public DataImage[] getBaseimages() {
+		return baseimages;
+	}
+	
+	
+	
+	
 	public void compare(ScannedImage x) throws IOException {
 		//all comparisons
 		int compar[]=new int[17];		
 		for(int i=0;i<17;i++) {
-			compar[i]=getDifferencePercent(x,images[i]);
+			compar[i]=getDifferencePercent(x,baseimages[i]);
 		}
 		// wanted percentage of difference
-		int percentage = 50;		
+		int percentage = 97;		
 		//comparison checks	based on wanted percentage of difference	
 		for(int i=0;i<17;i++) {
 			if(percentage>compar[i]) {
-				images[i].addPossibleMatches(x);
+				baseimages[i].addPossibleMatches(x);
 			}
-		}
-		
-		for(DataImage x1 : images) {
-			System.out.println(counterStat(x1));
 		}
 		
 	}
@@ -79,18 +82,6 @@ public class Comparator {
 		return Math.abs(r1 - r2) + Math.abs(g1 - g2) + Math.abs(b1 - b2);
 	}
 	
-	
-	
-	//FUNCTIONS
-
-
-	private int countMatches(DataImage img) {
-		return img.getPossibleMatches().size();
-	}
-
-	public String counterStat(DataImage img) {
-		return "There are " + countMatches(img) + " '" + img.getTitle() + "' badges";
-	}
 
 	
 	
