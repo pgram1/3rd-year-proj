@@ -44,7 +44,7 @@ public class Comparator {
 			System.out.println(compar[i]);
 		}
 		// wanted percentage of difference
-		int percentage = 10;		
+		int percentage = 25;		
 		//comparison checks	based on wanted percentage of difference	
 		for(int i=0;i<17;i++) {
 			if(percentage>compar[i]) {
