@@ -18,7 +18,17 @@ public class Program {
 			}
 
 			Scaler scal = new Scaler(a.getOutputFolder());
-			scal.scaleImages();
+			ScannedImageCollection collection=scal.processImages();
+			
+			Comparator comp = new Comparator();
+			//for all the images in collection do compare
+			for(int i=0;i<collection.getSize();i++) {
+				try {
+					comp.compare(collection.getImage(i));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 
 		} else {
 			JFileChooser jfc = new JFileChooser(".");
@@ -32,7 +42,11 @@ public class Program {
 			if (returnValue == 0) {
 
 				File[] files = jfc.getSelectedFiles();
+				
+				//for every document do...
 				Arrays.asList(files).forEach(x -> {
+					
+					
 					if (x.isFile()) {
 
 						System.out.println("----------------");
@@ -50,12 +64,29 @@ public class Program {
 						}
 						
 
-
 						Scaler scal = new Scaler(a.getOutputFolder());
-						scal.scaleImages();
+						ScannedImageCollection collection=scal.processImages();
+						
+						Comparator comp = new Comparator();
+						//for all the images in collection do compare
+						for(int i=0;i<collection.getSize();i++) {
+							try {
+								comp.compare(collection.getImage(i));
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+
+						
 					}
+					
+					
 				});
 			}
+			
+			
+
+			
 		}
 	}
 }
