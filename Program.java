@@ -72,6 +72,7 @@ public class Program {
 						for(int i=0;i<collection.getSize();i++) {
 							try {
 								comp.compare(collection.getImage(i));
+								System.out.println("---------------------------------");
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
