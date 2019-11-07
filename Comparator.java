@@ -35,7 +35,7 @@ public class Comparator {
 	
 	
 	
-	public void compare(ScannedImage x) throws IOException {
+	public void compare(ScannedImage x, Document a) throws IOException {
 		//all comparisons
 		int compar[]=new int[17];
 		System.out.println("Percentages for "+x.getTitle());
@@ -48,7 +48,7 @@ public class Comparator {
 		//comparison checks	based on wanted percentage of difference	
 		for(int i=0;i<17;i++) {
 			if(percentage>compar[i]) {
-				baseimages[i].addPossibleMatches(x);
+				a.addToBadges(baseimages[i]);
 				System.out.println(baseimages[i].getTitle());
 			}
 		}

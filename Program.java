@@ -24,11 +24,13 @@ public class Program {
 			//for all the images in collection do compare
 			for(int i=0;i<collection.getSize();i++) {
 				try {
-					comp.compare(collection.getImage(i));
+					comp.compare(collection.getImage(i),a);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
+			
+			a.showBadges();
 
 		} else {
 			JFileChooser jfc = new JFileChooser(".");
@@ -71,14 +73,15 @@ public class Program {
 						//for all the images in collection do compare
 						for(int i=0;i<collection.getSize();i++) {
 							try {
-								comp.compare(collection.getImage(i));
+								comp.compare(collection.getImage(i),a);
 								System.out.println("---------------------------------");
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						}
 
-						
+					
+						a.showBadges();
 					}
 					
 					
