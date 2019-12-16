@@ -25,8 +25,8 @@ public class Document {
 		new File(this.outputFolder).mkdirs();
 
 		System.out.println("\n-----\nExporting all images as PNG\n-----\n");
-		System.out.println("pdfimages.exe -png \"" + this.path + "\" \"" + this.outputFile + "\"");
-		Runtime.getRuntime().exec("3rdbinaries\\pdfimages.exe -png \"" + this.path + "\" \"" + this.outputFile + "\"").waitFor();
+		System.out.println("pdfimages.exe \"" + this.path + "\" \"" + this.outputFile + "\"");
+		Runtime.getRuntime().exec("3rdbinaries\\pdfimages.exe \"" + this.path + "\" \"" + this.outputFile + "\"").waitFor();
 
 	}
 
@@ -45,5 +45,26 @@ public class Document {
 	public int getNumberOfBadges() {
 		return this.badges.size();
 	}
+	
+	public void deleteLeftovers(){
+		
+		File directory = new File(this.outputFolder);
+		
+		deleteDirectory(directory);
+        
+	}
+	
 
+    private boolean deleteDirectory(File dir) {
+        if (dir.isDirectory()) {
+            File[] children = dir.listFiles();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDirectory(children[i]);
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+        return dir.delete();
+    }
 }

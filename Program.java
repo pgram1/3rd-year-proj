@@ -82,8 +82,8 @@ public class Program {
 
 					
 						a.showBadges();
-					}
-					
+						a.deleteLeftovers(); //get rid of image files that are not needed anymore
+					}					
 					
 				});
 			}
