@@ -39,7 +39,7 @@ public class Document {
 	}
 	
 	public void showBadges() {
-		System.out.println("Badges totally "+getNumberOfBadges()+" badges in this document: "+this.badges.toString());
+		System.out.println("Totally "+getNumberOfBadges()+" badges in this document: "+this.badges.toString());
 	}
 	
 	public int getNumberOfBadges() {

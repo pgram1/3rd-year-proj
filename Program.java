@@ -31,13 +31,14 @@ public class Program {
 			}
 			
 			a.showBadges();
+			a.deleteLeftovers(); //get rid of image files that are not needed anymore
 
 		} else {
 			JFileChooser jfc = new JFileChooser(".");
-			jfc.setDialogTitle("Select a PDF Document:");
+			jfc.setDialogTitle("Select the PDF files of the Syllabi:");
 			jfc.setMultiSelectionEnabled(true);
 			jfc.setAcceptAllFileFilterUsed(false);
-			FileNameExtensionFilter filter = new FileNameExtensionFilter("PDF Documents", new String[] { "pdf" });
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("Syllabi PDF Documents", new String[] { "pdf" });
 			jfc.addChoosableFileFilter(filter);
 
 			int returnValue = jfc.showOpenDialog(null);
