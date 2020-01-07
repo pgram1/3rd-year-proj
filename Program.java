@@ -30,6 +30,7 @@ public class Program {
 				}
 			}
 			
+			a.showUnitInfo();
 			a.showBadges();
 			a.deleteLeftovers(); //get rid of image files that are not needed anymore
 
@@ -81,7 +82,7 @@ public class Program {
 							}
 						}
 
-					
+						a.showUnitInfo();
 						a.showBadges();
 						a.deleteLeftovers(); //get rid of image files that are not needed anymore
 					}					
