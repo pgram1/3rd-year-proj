@@ -13,11 +13,11 @@ public class Document {
 	private ArrayList<DataImage> badges;
 
 	private String unitTitle;
-	private String unitCode;
+	private UnitCodeHelper unitCodeHelper;
 	private String department;
+	private int levelofstudy;
 	private String programme;
 	private String semester;
-	private String levelofstudy;
 
 	public Document(String path) {
 		this.path = path;
@@ -29,11 +29,11 @@ public class Document {
 		this.badges = new ArrayList<DataImage>();
 
 		this.unitTitle = "GenericUnitTitle";
-		this.unitCode = "GenericCode";
+		this.unitCodeHelper = new UnitCodeHelper();
 		this.department = "GenericDepartment";
+		this.levelofstudy = 0;
 		this.programme = "GenericProgramme";
 		this.semester = "GenericSemester";
-		this.levelofstudy = "GenericLevelOfStudy";
 
 	}
 
@@ -58,12 +58,17 @@ public class Document {
 
 		String content = readFile(this.outputFile + ".txt", StandardCharsets.UTF_8);
 
-		this.unitTitle = between(content, "UNIT TITLE", "CREDITS");
-		this.unitCode = between(content, "UNIT CODE", "UNIT TITLE");
-		this.department = between(content, "DEPARTMENT", "PROGRAMME");
-		this.levelofstudy = between(content, "LEVEL OF STUDY", "LOCATION");
-		this.programme = between(content, "PROGRAMME", "UNIT CODE");
-		this.semester = between(content, "SEMESTER/SESSION", "LEVEL OF STUDY");
+		if (!content.isEmpty()) {
+
+			this.unitTitle = between(content, "UNIT TITLE", "CREDITS");
+			this.unitCodeHelper = new UnitCodeHelper(between(content, "UNIT CODE", "UNIT TITLE"));
+
+			// we use the information derived from the unit code to achieve data uniformity
+			this.department = this.unitCodeHelper.getDepartment();
+			this.levelofstudy = this.unitCodeHelper.getLevelofstudy();
+			this.programme = this.unitCodeHelper.getProgramme();
+			this.semester = between(content, "SEMESTER/SESSION", "LEVEL OF STUDY");
+		}
 	}
 
 	private String readFile(String path, Charset encoding) throws IOException {
@@ -103,7 +108,7 @@ public class Document {
 	public void showUnitInfo() {
 		System.out.println("\n-----\nUnit Information\n-----\n");
 		System.out.println("Unit Title: " + this.unitTitle);
-		System.out.println("Unit Code: " + this.unitCode);
+		System.out.println("Unit Code: " + this.unitCodeHelper.getUnitCode());
 		System.out.println("Department: " + this.department);
 		System.out.println("Level of Study: " + this.levelofstudy);
 		System.out.println("Programme: " + this.programme);
