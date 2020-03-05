@@ -11,7 +11,7 @@ public class Document {
 	private String outputFolder;
 	private String outputFile;
 	private ArrayList<DataImage> badges;
-	
+
 	private String unitTitle;
 	private String unitCode;
 	private String department;
@@ -53,19 +53,17 @@ public class Document {
 	}
 
 	private void getDocInfo() throws InterruptedException, IOException {
-		Runtime.getRuntime().exec("3rdbinaries\\pdftotext.exe -q -l 1 -raw -table -lineprinter -linespacing 1 \"" + this.path + "\" \"" + this.outputFile + ".txt\"").waitFor();
-		
-		
-		String content = readFile(this.outputFile+".txt", StandardCharsets.UTF_8);
-		
-		
-		
-		this.unitTitle= between(content, "UNIT TITLE", "CREDITS");
-		this.unitCode= between(content, "UNIT CODE", "UNIT TITLE");
-		this.department= between(content, "DEPARTMENT", "PROGRAMME");
-		this.levelofstudy= between(content, "LEVEL OF STUDY", "LOCATION");
-		this.programme= between(content, "PROGRAMME", "UNIT CODE");
-		this.semester= between(content, "SEMESTER/SESSION", "LEVEL OF STUDY");
+		Runtime.getRuntime().exec("3rdbinaries\\pdftotext.exe -q -l 1 -raw -table -lineprinter -linespacing 1 \""
+				+ this.path + "\" \"" + this.outputFile + ".txt\"").waitFor();
+
+		String content = readFile(this.outputFile + ".txt", StandardCharsets.UTF_8);
+
+		this.unitTitle = between(content, "UNIT TITLE", "CREDITS");
+		this.unitCode = between(content, "UNIT CODE", "UNIT TITLE");
+		this.department = between(content, "DEPARTMENT", "PROGRAMME");
+		this.levelofstudy = between(content, "LEVEL OF STUDY", "LOCATION");
+		this.programme = between(content, "PROGRAMME", "UNIT CODE");
+		this.semester = between(content, "SEMESTER/SESSION", "LEVEL OF STUDY");
 	}
 
 	private String readFile(String path, Charset encoding) throws IOException {

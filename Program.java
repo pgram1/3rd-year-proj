@@ -18,39 +18,39 @@ public class Program {
 			}
 
 			Scaler scal = new Scaler(a.getOutputFolder());
-			ScannedImageCollection collection=scal.processImages();
-			
+			ScannedImageCollection collection = scal.processImages();
+
 			Comparator comp = new Comparator();
-			//for all the images in collection do compare
-			for(int i=0;i<collection.getSize();i++) {
+			// for all the images in collection do compare
+			for (int i = 0; i < collection.getSize(); i++) {
 				try {
-					comp.compare(collection.getImage(i),a);
+					comp.compare(collection.getImage(i), a);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-			
+
 			a.showUnitInfo();
 			a.showBadges();
-			a.deleteLeftovers(); //get rid of image files that are not needed anymore
+			a.deleteLeftovers(); // get rid of image files that are not needed anymore
 
 		} else {
 			JFileChooser jfc = new JFileChooser(".");
 			jfc.setDialogTitle("Select the PDF files of the Syllabi:");
 			jfc.setMultiSelectionEnabled(true);
 			jfc.setAcceptAllFileFilterUsed(false);
-			FileNameExtensionFilter filter = new FileNameExtensionFilter("Syllabi PDF Documents", new String[] { "pdf" });
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("Syllabi PDF Documents",
+					new String[] { "pdf" });
 			jfc.addChoosableFileFilter(filter);
 
 			int returnValue = jfc.showOpenDialog(null);
 			if (returnValue == 0) {
 
 				File[] files = jfc.getSelectedFiles();
-				
-				//for every document do...
+
+				// for every document do...
 				Arrays.asList(files).forEach(x -> {
-					
-					
+
 					if (x.isFile()) {
 
 						System.out.println("----------------");
@@ -66,16 +66,15 @@ public class Program {
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
-						
 
 						Scaler scal = new Scaler(a.getOutputFolder());
-						ScannedImageCollection collection=scal.processImages();
-						
+						ScannedImageCollection collection = scal.processImages();
+
 						Comparator comp = new Comparator();
-						//for all the images in collection do compare
-						for(int i=0;i<collection.getSize();i++) {
+						// for all the images in collection do compare
+						for (int i = 0; i < collection.getSize(); i++) {
 							try {
-								comp.compare(collection.getImage(i),a);
+								comp.compare(collection.getImage(i), a);
 								System.out.println("---------------------------------");
 							} catch (IOException e) {
 								e.printStackTrace();
@@ -84,15 +83,15 @@ public class Program {
 
 						a.showUnitInfo();
 						a.showBadges();
-						a.deleteLeftovers(); //get rid of image files that are not needed anymore
-					}					
-					
+						a.deleteLeftovers(); // get rid of image files that are not needed anymore
+					}
+
 				});
 			}
-			
-			
 
-			
 		}
+
+		// fin
+		System.exit(0);
 	}
 }
