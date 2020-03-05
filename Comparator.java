@@ -50,10 +50,10 @@ public class Comparator {
 	public void compare(ScannedImage x, Document a) throws IOException {
 		// all comparisons
 		int compar[] = new int[17];
-		System.out.println("Percentages for " + x.getTitle());
+		//System.out.println("Percentages for " + x.getTitle());
 		for (int i = 0; i < 17; i++) {
 			compar[i] = getDifferencePercent(x, baseimages[i]);
-			System.out.println(compar[i]);
+			//System.out.println(compar[i]);
 		}
 		// wanted percentage of difference
 		int percentage = 25;
@@ -61,7 +61,7 @@ public class Comparator {
 		for (int i = 0; i < 17; i++) {
 			if (percentage > compar[i]) {
 				a.addToBadges(baseimages[i]);
-				System.out.println(baseimages[i].getTitle());
+				//System.out.println(baseimages[i].getTitle());
 			}
 		}
 

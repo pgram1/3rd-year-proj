@@ -38,15 +38,15 @@ public class Document {
 	}
 
 	void getImages() throws IOException, InterruptedException {
-		System.out.println("\n-----\nCreating output directory\n-----\n");
-		System.out.println((this.outputFolder).toString());
+		//System.out.println("\n-----\nCreating output directory\n-----\n");
+		//System.out.println((this.outputFolder).toString());
 		new File(this.outputFolder).mkdirs();
 
-		System.out.println("\n-----\nGetting document info\n-----\n");
+		//System.out.println("\n-----\nGetting document info\n-----\n");
 		getDocInfo();
 
-		System.out.println("\n-----\nExporting all images as PNG\n-----\n");
-		System.out.println("pdfimages.exe \"" + this.path + "\" \"" + this.outputFile + "\"");
+		//System.out.println("\n-----\nExporting all images as PNG\n-----\n");
+		//System.out.println("pdfimages.exe \"" + this.path + "\" \"" + this.outputFile + "\"");
 		Runtime.getRuntime().exec("3rdbinaries\\pdfimages.exe \"" + this.path + "\" \"" + this.outputFile + "\"")
 				.waitFor();
 

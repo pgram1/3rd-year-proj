@@ -16,13 +16,13 @@ public class Scaler {
 
 		File[] fileList = folderPath.listFiles();
 
-		System.out.println("\n-----\nScaling all images - Reducing to gif colours\n-----\n");
+		//System.out.println("\n-----\nScaling all images - Reducing to gif colours\n-----\n");
 
 		Arrays.asList(fileList).forEach(x -> {
-			System.out.println(x.getPath());
+			//System.out.println(x.getPath());
 
-			System.out.println(
-					"3rdbinaries\\ffmpeg.exe -i \"" + x.getPath() + "\" -vf scale=200:200 \"" + x.getPath() + ".gif\"");
+			/*System.out.println(
+					"3rdbinaries\\ffmpeg.exe -i \"" + x.getPath() + "\" -vf scale=200:200 \"" + x.getPath() + ".gif\"");*/
 			try {
 				Runtime.getRuntime().exec("3rdbinaries\\ffmpeg.exe -i \"" + x.getPath() + "\" -vf scale=200:200 \""
 						+ x.getPath() + ".gif\"").waitFor();
@@ -32,13 +32,13 @@ public class Scaler {
 
 		});
 
-		System.out.println("\n-----\nDeleting all PNGs\n-----\n");
+		//System.out.println("\n-----\nDeleting all PNGs\n-----\n");
 
 		Arrays.asList(fileList).forEach(x -> {
 			x.delete();
 		});
 
-		System.out.println("\n-----\nEnlisting new files\n-----\n");
+		//System.out.println("\n-----\nEnlisting new files\n-----\n");
 
 		File[] newFileList = folderPath.listFiles();
 		ScannedImageCollection collection = new ScannedImageCollection();
