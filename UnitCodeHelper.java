@@ -30,13 +30,17 @@ public class UnitCodeHelper {
 
 		ArrayList<Object> temp = new ArrayList<Object>();
 
-		int numbers = new Scanner(originalCode).useDelimiter("\\D+").nextInt();
+		Scanner scanner = new Scanner(originalCode);
+
+		int numbers = scanner.useDelimiter("\\D+").nextInt();
 
 		int firstDigit = Integer.parseInt(Integer.toString(numbers).substring(0, 1));
 
 		temp.add(0, firstDigit);
 
 		temp.add(1, originalCode.replace(Integer.toString(numbers), ""));
+
+		scanner.close();
 
 		return temp;
 	}
