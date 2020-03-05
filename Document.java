@@ -30,9 +30,9 @@ public class Document {
 
 		this.unitTitle = "GenericUnitTitle";
 		this.unitCodeHelper = new UnitCodeHelper();
-		this.department = "GenericDepartment";
+		this.department = null;
 		this.levelofstudy = 0;
-		this.programme = "GenericProgramme";
+		this.programme = null;
 		this.semester = "GenericSemester";
 
 	}
@@ -58,17 +58,18 @@ public class Document {
 
 		String content = readFile(this.outputFile + ".txt", StandardCharsets.UTF_8);
 
-		if (!content.isEmpty()) {
+		if (content.length() == 1)
+			return;
 
-			this.unitTitle = between(content, "UNIT TITLE", "CREDITS");
-			this.unitCodeHelper = new UnitCodeHelper(between(content, "UNIT CODE", "UNIT TITLE"));
+		this.unitTitle = between(content, "UNIT TITLE", "CREDITS");
+		this.unitCodeHelper = new UnitCodeHelper(between(content, "UNIT CODE", "UNIT TITLE"));
 
-			// we use the information derived from the unit code to achieve data uniformity
-			this.department = this.unitCodeHelper.getDepartment();
-			this.levelofstudy = this.unitCodeHelper.getLevelofstudy();
-			this.programme = this.unitCodeHelper.getProgramme();
-			this.semester = between(content, "SEMESTER/SESSION", "LEVEL OF STUDY");
-		}
+		// we use the information derived from the unit code to achieve data uniformity
+		this.department = this.unitCodeHelper.getDepartment();
+		this.levelofstudy = this.unitCodeHelper.getLevelofstudy();
+		this.programme = this.unitCodeHelper.getProgramme();
+		this.semester = between(content, "SEMESTER/SESSION", "LEVEL OF STUDY");
+
 	}
 
 	private String readFile(String path, Charset encoding) throws IOException {
