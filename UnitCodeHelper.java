@@ -12,9 +12,9 @@ public class UnitCodeHelper {
 	public UnitCodeHelper() {
 		this.unitCode = "GenericUnitCode";
 		this.splitUnitCode = new ArrayList<Object>();
-		this.department = "GenericDepartment";
+		this.department = null;
 		this.levelofstudy = 0;
-		this.programme = "GenericProgramme";
+		this.programme = null;
 	}
 
 	public UnitCodeHelper(String unitCode) {

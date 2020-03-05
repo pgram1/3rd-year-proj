@@ -30,9 +30,9 @@ public class Document {
 
 		this.unitTitle = "GenericUnitTitle";
 		this.unitCodeHelper = new UnitCodeHelper();
-		this.department = null;
+		this.department = "GenericDepartment";
 		this.levelofstudy = 0;
-		this.programme = null;
+		this.programme = "GenericProgramme";
 		this.semester = "GenericSemester";
 
 	}
