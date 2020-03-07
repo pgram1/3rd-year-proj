@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.regex.*;
 
 public class Document {
 	private String path;
@@ -38,15 +39,16 @@ public class Document {
 	}
 
 	void getImages() throws IOException, InterruptedException {
-		//System.out.println("\n-----\nCreating output directory\n-----\n");
-		//System.out.println((this.outputFolder).toString());
+		// System.out.println("\n-----\nCreating output directory\n-----\n");
+		// System.out.println((this.outputFolder).toString());
 		new File(this.outputFolder).mkdirs();
 
-		//System.out.println("\n-----\nGetting document info\n-----\n");
+		// System.out.println("\n-----\nGetting document info\n-----\n");
 		getDocInfo();
 
-		//System.out.println("\n-----\nExporting all images as PNG\n-----\n");
-		//System.out.println("pdfimages.exe \"" + this.path + "\" \"" + this.outputFile + "\"");
+		// System.out.println("\n-----\nExporting all images as PNG\n-----\n");
+		// System.out.println("pdfimages.exe \"" + this.path + "\" \"" + this.outputFile
+		// + "\"");
 		Runtime.getRuntime().exec("3rdbinaries\\pdfimages.exe \"" + this.path + "\" \"" + this.outputFile + "\"")
 				.waitFor();
 
@@ -62,13 +64,13 @@ public class Document {
 			return;
 
 		this.unitTitle = between(content, "UNIT TITLE", "CREDITS");
-		this.unitCodeHelper = new UnitCodeHelper(between(content, "UNIT CODE", "UNIT TITLE"));
+		this.unitCodeHelper = new UnitCodeHelper(findUnitCode(content, "UNIT CODE"));
 
 		// we use the information derived from the unit code to achieve data uniformity
 		this.department = this.unitCodeHelper.getDepartment();
 		this.levelofstudy = this.unitCodeHelper.getLevelofstudy();
 		this.programme = this.unitCodeHelper.getProgramme();
-		this.semester = between(content, "SEMESTER/SESSION", "LEVEL OF STUDY");
+		this.semester = findSemester(content, "SEMESTER/SESSION");
 
 	}
 
@@ -92,6 +94,29 @@ public class Document {
 			return "";
 		}
 		return value.substring(adjustedPosA, posB).trim().replaceAll("\\s{2,}", " ");
+	}
+
+	private String findSemester(String str, String word) {
+		Pattern p = Pattern.compile(word + "\\W+(\\w+)");
+		Matcher m = p.matcher(str);
+		if (m.find())
+			if (m.group(1).equalsIgnoreCase("Fall")) {
+				return "Autumn";
+			} else {
+				return m.group(1);
+			}
+		else
+			return "Whole Session";
+	}
+
+	private String findUnitCode(String str, String word) {
+		Pattern p = Pattern.compile(word + "\\W+(\\w+)");
+		Matcher m = p.matcher(str);
+		if (m.find()) {
+			return m.group(1);
+		} else {
+			return null;
+		}
 	}
 
 	public String getOutputFolder() {
