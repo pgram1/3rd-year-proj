@@ -67,7 +67,7 @@ public class UnitCodeHelper {
 		} else if (this.splitUnitCode.get(1).equals("CPY")) {
 			return "Psychology";
 		} else if (this.splitUnitCode.get(1).equals("CES")) {
-			return "English Studies Department";
+			return "English Studies";
 		} else
 			return "Unknown Department";
 	}
