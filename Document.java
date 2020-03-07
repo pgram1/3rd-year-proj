@@ -66,7 +66,6 @@ public class Document {
 		// using a character that is highly unlikely to be used as a delimiter to
 		// replace big empty space
 		content = content.trim().replaceAll("\\s{2,}", "█");
-		System.out.println(content);
 
 		// using our delimiter to find all words of the unit title without knowing the
 		// next field, parsing errors occur when the unit title contains more than 1
