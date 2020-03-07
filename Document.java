@@ -63,7 +63,15 @@ public class Document {
 		if (content.length() == 1)
 			return;
 
-		this.unitTitle = between(content, "UNIT TITLE", "CREDITS");
+		// using a character that is highly unlikely to be used as a delimiter to
+		// replace big empty space
+		content = content.trim().replaceAll("\\s{2,}", "█");
+		System.out.println(content);
+
+		// using our delimiter to find all words of the unit title without knowing the
+		// next field, parsing errors occur when the unit title contains more than 1
+		// spaces
+		this.unitTitle = between(content, "UNIT TITLE█", "█");
 		this.unitCodeHelper = new UnitCodeHelper(findUnitCode(content, "UNIT CODE"));
 
 		// we use the information derived from the unit code to achieve data uniformity
@@ -79,21 +87,13 @@ public class Document {
 		return new String(encoded, encoding);
 	}
 
-	private String between(String value, String a, String b) {
-		// Return a substring between the two strings.
-		int posA = value.indexOf(a);
-		if (posA == -1) {
-			return "";
+	private String between(String original, String a, String b) {
+		Pattern pattern = Pattern.compile(a + "(.*?)" + b, Pattern.DOTALL);
+		Matcher matcher = pattern.matcher(original);
+		while (matcher.find()) {
+			return matcher.group(1);
 		}
-		int posB = value.lastIndexOf(b);
-		if (posB == -1) {
-			return "";
-		}
-		int adjustedPosA = posA + a.length();
-		if (adjustedPosA >= posB) {
-			return "";
-		}
-		return value.substring(adjustedPosA, posB).trim().replaceAll("\\s{2,}", " ");
+		return null;
 	}
 
 	private String findSemester(String str, String word) {
